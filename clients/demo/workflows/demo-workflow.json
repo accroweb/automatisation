@@ -1,0 +1,25 @@
+{
+  "name": "demo-workflow-override",
+  "nodes": [
+    {
+      "id": "demo-set-1",
+      "name": "Demo Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [400, 200],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "demoNote",
+              "value": "This workflow overrides the base for client demo"
+            }
+          ]
+        },
+        "options": {}
+      }
+    }
+  ],
+  "connections": {},
+  "active": false
+}

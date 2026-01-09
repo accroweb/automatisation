@@ -1,0 +1,51 @@
+{
+  "nodes": [
+    {
+      "identity": {
+        "name": "Code",
+        "role": "Transforme et enrichit les données personnalisées",
+        "dependencies": {
+          "upstream": ["Trigger", "Gmail"],
+          "downstream": ["Google Sheets", "monday.com"]
+        }
+      },
+      "objective": "Préparer les payloads JSON et calculs métiers pour les autres nodes.",
+      "preconditions": [
+        "Items valides contenant json/binary",
+        "Modules externes activés si utilisés"
+      ],
+      "entries": [
+        {"name": "items", "type": "array", "constraints": "Contient des objets {json, binary}"},
+        {"name": "$helpers", "type": "object", "constraints": "Ne pas modifier directement"}
+      ],
+      "processing": "Exécute le script JS/Python et applique les règles métier sans effets de bord.",
+      "outputs": [
+        {"name": "items", "type": "array", "notes": "Structure cohérente avec les nodes suivants"}
+      ],
+      "conditions": "Les structures doivent être alignées et les promesses résolues.",
+      "guarantees": "Transforme les données comme décrit si les préconditions sont remplies.",
+      "errors": [
+        "Erreur d’exécution -> arrêt du node"
+      ],
+      "constraints": [
+        "Limiter le temps d’exécution",
+        "Ne pas logguer de secrets"
+      ]
+    }
+  ],
+  "workflow": {
+    "description": "Workflow général articulant Code, Gmail, Google Sheets, monday.com, If et Switch.",
+    "engagements": [
+      "Chaque node répond en moins d’une minute",
+      "Les erreurs sont envoyées vers un Error Trigger"
+    ],
+    "dependencies": [
+      "Code prépare les données",
+      "Gmail/Sheets/monday.com écrivent avec des credentials valides"
+    ],
+    "invariants": [
+      "Structure JSON normalisée",
+      "Fallback défini pour chaque branche conditionnelle"
+    ]
+  }
+}

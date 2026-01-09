@@ -1,0 +1,14 @@
+node_modules/
+.env
+/.env.local
+/.env.*.local
+dist/
+*.log
+Tools/**/*.log
+clients/*/config/*.env
+clients/*/config/*.env.local
+clients/*/workflows/*.credentials.json
+clients/*/config/*.token
+clients/*/config/*.key
+clients/*/config/*.pem
+clients/*/config/*.secret

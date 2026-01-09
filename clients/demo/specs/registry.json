@@ -1,0 +1,20 @@
+{
+  "workflow": {
+    "description": "Workflow enrichi pour le client demo avec des alertes supplémentaires, des séquences Gmail et des blocs monday.com dédiés.",
+    "engagements": [
+      "Chaque node répond en moins d'une minute",
+      "Les erreurs sont envoyées vers un Error Trigger",
+      "Les alertes démarrent un message Slack dès qu'un item critique est détecté"
+    ],
+    "dependencies": [
+      "Code prépare les données",
+      "Gmail/Sheets/monday.com écrivent avec des credentials valides",
+      "Les notifications monday.com utilisent un board dédié `demo-project`"
+    ],
+    "invariants": [
+      "Structure JSON normalisée",
+      "Fallback défini pour chaque branche conditionnelle",
+      "Les états critiques sont loggés dans `items[0].json.status` avant chaque export"
+    ]
+  }
+}
