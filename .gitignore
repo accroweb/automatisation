@@ -1,14 +1,49 @@
+# Dépendances Node.js
 node_modules/
+**/node_modules/
+
+# Variables d'environnement
 .env
 /.env.local
 /.env.*.local
-dist/
-*.log
-Tools/**/*.log
 clients/*/config/*.env
 clients/*/config/*.env.local
+
+# Fichiers de build et distribution
+dist/
+build/
+
+# Logs
+*.log
+Tools/**/*.log
+
+# Secrets et credentials
 clients/*/workflows/*.credentials.json
 clients/*/config/*.token
 clients/*/config/*.key
 clients/*/config/*.pem
 clients/*/config/*.secret
+
+# Front-end - Fichiers compilés et source maps
+front-end/css/style.css
+front-end/css/style.css.map
+front-end/scss/main.css
+front-end/scss/main.css.map
+front-end/**/*.map
+
+# Front-end - Dossiers temporaires et cache
+front-end/tmp/
+front-end/.cache/
+front-end/.sass-cache/
+
+# Front-end - Fichiers de projet d'éditeurs
+front-end/**/*.prproj
+front-end/**/*.psd
+front-end/**/*.ai
+front-end/**/.DS_Store
+front-end/**/Thumbs.db
+
+# Front-end - Fichiers vidéo volumineux (optionnel - décommenter si nécessaire)
+# front-end/**/*.mp4
+# front-end/**/*.mov
+# front-end/**/*.avi
