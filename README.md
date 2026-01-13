@@ -26,6 +26,12 @@ Socle minimal pour orchestrer des workflows n8n, versionne et pret a etre clone 
   - `--update-only` : n'envoi que la mise a jour en relisant `Tools/update/*_update_<id>.json`.
   - `--update-file <path>` : force un fichier precis lorsqu'il y a plusieurs copies.
 
+## Pull / Push workflows
+
+- `Pull/` contient les exports bruts téléchargés depuis `n8n.gdev.fr` ; `Push/` accueille une copie modifiable avant de réinjecter.
+- `node scripts/pull-workflow.mjs <workflowId>` télécharge le workflow indiqué, le stocke sous `Pull/workflow-<id>.json` et crée une copie identique dans `Push/` prête à être modifiée.
+- `node scripts/push-workflow.mjs <Push/<name>_<id>.json> [--workflow-id <id>]` prend un fichier dans `Push/` (le chemin est relatif au dossier) et le publie vers l'API, en précisant un ID pour remplacer un workflow existant ou sans ID pour en créer un nouveau.
+
 ## Git et versioning
 - Le projet s'appelle `workflow-gen` dans le package et la documentation, et les releases du socle sont marquees par des tags SemVer (`v1.0.0`, etc.).
 - `docs/CLIENT_BOOTSTRAP.md` explique comment creer un repo client, ajouter le remote `template`, creer `clients/<slug>/` et fusionner ensuite `git fetch template && git merge template/main`.
